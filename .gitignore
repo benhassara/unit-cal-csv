@@ -1,0 +1,15 @@
+# JS & NPM
+typings
+node_modules
+npm-debug.log
+bower_components
+
+# Environment
+*.env
+
+# IDE
+.vscode
+.idea
+
+# Project-level
+*.csv
