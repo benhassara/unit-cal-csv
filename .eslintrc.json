@@ -8,6 +8,7 @@
     "mocha": true
   },
   "rules": {
+    "radix": "error",
     "no-extra-semi": "warn",
     "no-cond-assign": "warn",
     "curly": ["error", "multi-or-nest"],

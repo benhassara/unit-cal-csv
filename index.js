@@ -1,22 +1,23 @@
 const read = require('./lib/read');
 const gcal = require('./lib/fmt-gcal');
-const fcsv = require('fast-csv');
+const write = require('./lib/write');
 
 const opts = {
   fcsv: {
     headers: true,
-    ignoreEmpty: true
+    ignoreEmpty: true,
+    discardUnmappedColumns: true
   },
-  name: 'ben'
+  name: 'ben',
+  writePath: 'gcal-unit2.csv',
+  readPath: 'g30-Schedule-Unit-2.csv'
 };
 
 read('g30-Schedule-Unit-2.csv', opts)
-.then(lessons => {
+.then((lessons) => {
   return gcal(lessons);
 })
-.then(lessons => {
-  fcsv.writeToPath('junk/gcal-unit2.csv', lessons, { headers: true })
-    .on('finish', () => { console.log('CSV written.')});
-}).catch(error => {
+.then((lessons) => { write(lessons, opts.writePath); })
+.catch((error) => {
   console.log(error);
 });
